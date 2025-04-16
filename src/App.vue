@@ -1,27 +1,23 @@
 <script setup>
-import { RouterView } from "vue-router";
-import NavBar from "./components/NavBar.vue";
-
-import { ref } from "vue";
-const helloText = ref("")
-function onHelloText(response) {
-
-  helloText.value = response;
-}
+import { RouterLink, RouterView } from 'vue-router';
+// import HelloWorld from './components/HelloWorld.vue'
+// import NavBar from './components/NavBar.vue';
+import AboutUsComponent from './components/AboutUsComponent.vue';
+import TopBar from './components/TopBar.vue'
 </script>
 
 <template>
-  <NavBar @on-hello-text="onHelloText" />
+  <header>
+    <TopBar/>
+  </header>
 
-  <pre class="mt-18">
-    {{ helloText.message }}
-
-  </pre>
-  <div class="mt-5">
-    <RouterView />
-  </div>
+  <RouterView />
+  <footer>
+    <AboutUsComponent/>
+  </footer>
 </template>
 
 <style>
 @import "tailwindcss";
+
 </style>
