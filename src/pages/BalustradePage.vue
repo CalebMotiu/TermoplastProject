@@ -12,12 +12,10 @@ onMounted(() => {
 
 const searchQuery = ref('')
 
-// Formularele
 const newTitle = ref('')
 const newDescription = ref('')
 const newImg = ref('')
 
-// Adaugă balustrada
 const handleAdauga = () => {
   if (!newTitle.value || !newImg.value) {
     alert("Titlul și imaginea sunt obligatorii!")
@@ -30,7 +28,6 @@ const handleAdauga = () => {
     img: newImg.value
   })
 
-  // Resetare formular
   newTitle.value = ''
   newDescription.value = ''
   newImg.value = ''
@@ -81,7 +78,6 @@ const handleCancelEdit = () => {
   <div class="bg-gradient-to-b from-slate-700 to-slate-400 grow pb-10">
     <div class="flex justify-center mt-8 text-xl sm:text-4xl font-bold">Balustrade</div>
 
-    <!-- Search bar -->
     <div class="flex justify-center mt-4">
       <input
         type="text"
@@ -91,7 +87,6 @@ const handleCancelEdit = () => {
       />
     </div>
 
-    <!-- Formular pentru adăugare -->
     <div class="flex flex-col items-center mt-6 space-y-2">
       <input
         v-model="newTitle"
@@ -119,7 +114,6 @@ const handleCancelEdit = () => {
       </button>
     </div>
 
-    <!-- Grilă de produse -->
     <div class="grid grid-cols-2 grid-flow-row sm:grid-cols-3 lg:grid-cols-4 mt-6">
       <AveragePrice />
 
@@ -128,7 +122,6 @@ const handleCancelEdit = () => {
         :key="index"
         class="flex flex-col items-center mt-4 p-4 rounded-xl mx-2 shadow-lg bg-white/10 backdrop-blur"
         >
-        <!-- Dacă e în mod editare -->
         <div v-if="editingId === index" class="w-full space-y-2">
           <input
             v-model="editTitle"
@@ -158,7 +151,6 @@ const handleCancelEdit = () => {
           </div>
         </div>
 
-        <!-- Dacă NU e în editare -->
         <div v-else>
           <ProductCard
             :title="product.title"

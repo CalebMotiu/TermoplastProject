@@ -1,19 +1,18 @@
 import { Router } from "express"
 import {
-  adaugaBalustrada,
-  getBalustradeList,
-  stergeBalustrada,
-  editeazaBalustrada
-  
-} from "../service/balustrade.service.js"
+  adaugaRoleta,
+    getRoleteList,
+    stergeRoleta,
+    editeazaRoleta
+} from "../service/rolete.service.js"
 
-export const balustradeRouter = Router()
+export const roleteRouter = Router()
 
-balustradeRouter.get("/", (req, res) => {
-  res.send(JSON.stringify(getBalustradeList()))
+roleteRouter.get("/", (req, res) => {
+  res.send(JSON.stringify(getRoleteList()))
 })
 
-balustradeRouter.post("/adauga-balustrada", (req, res) => {
+roleteRouter.post("/adauga-roleta", (req, res) => {
   const { title, description, img } = req.body
 
   const check = new RegExp("^[a-zA-Z0-9 ]*$")
@@ -23,11 +22,11 @@ balustradeRouter.post("/adauga-balustrada", (req, res) => {
     return
   }
 
-  adaugaBalustrada({ title, description, img })
+  adaugaRoleta({ title, description, img })
   res.send("ok")
 })
 
-balustradeRouter.delete("/delete-note", (req, res) => {
+roleteRouter.delete("/delete-roleta", (req, res) => {
   const { id } = req.body
 
   const checkId = new RegExp("^[0-9]*$")
@@ -36,11 +35,11 @@ balustradeRouter.delete("/delete-note", (req, res) => {
     return
   }
 
-  stergeBalustrada(id)
+  stergeRoleta(id)
   res.send("ok")
 })
 
-balustradeRouter.put("/edit-note", (req, res) => {
+roleteRouter.put("/edit-roleta", (req, res) => {
   const { id, title, description, img } = req.body
 
   const check = new RegExp("^[a-zA-Z0-9 ]*$")
@@ -49,6 +48,6 @@ balustradeRouter.put("/edit-note", (req, res) => {
     return
   }
 
-  editeazaBalustrada(id, { title, description, img })
+  editeazaRoleta(id, { title, description, img })
   res.send("ok")
 })
