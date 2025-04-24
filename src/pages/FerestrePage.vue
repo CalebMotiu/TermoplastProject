@@ -155,7 +155,7 @@ const handleCancelEdit = () => {
           <ProductCard
             :title="product.title"
             :imageSrc="product.img"
-            :route="product.route || '/fereastra'"
+            :route="`/fereastra/${index}`"
           />
 
           <div class="flex justify-center gap-2 mt-2">

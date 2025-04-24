@@ -1,21 +1,37 @@
 <script setup>
-import ProudctText from '../components/ProudctText.vue';
-import ProductImg from '../components/ProductImg.vue';
-import ProductName from '../components/ProductName.vue';
+import { computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useBalustrade } from '../stores/balustrade'
 
-const title =  "balustrada"
-const img = "src/assets/produsBalustrada.jpeg"
-const text = { header: "Product name", text: "A lot of information about the the product lalalallalallalalallalalalalalalallala" }
+import ProductName from '../components/ProductName.vue'
+import ProductImg from '../components/ProductImg.vue'
+import ProudctText from '../components/ProudctText.vue'
+
+const route = useRoute()
+const store = useBalustrade()
+
+onMounted(() => {
+  if (store.lists.length === 0) {
+    store.fetchBalustrade()
+  }
+})
+
+const produs = computed(() => {
+  const index = parseInt(route.params.id)
+  return store.lists[index]
+})
 </script>
 
 <template>
-    <div class="flex-grow">
-        <ProductName :numeProdus="title"/>
-        <div class="flex flex-col sm:flex-row justify-around mt-8">
-            <ProductImg :imageSrc="img" />
-            <ProudctText :header="text.header" :text="text.text" />
-        </div>
+  <div v-if="produs">
+    <ProductName :numeProdus="produs.title" />
+    <div class="flex flex-col sm:flex-row justify-around mt-8">
+      <ProductImg :imageSrc="produs.img" />
+      <ProudctText :header="produs.title" :text="produs.description" />
     </div>
-</template>
+  </div>
 
-<style></style>
+  <div v-else class="text-white text-center mt-10">
+    Produsul nu a fost găsit.
+  </div>
+</template>

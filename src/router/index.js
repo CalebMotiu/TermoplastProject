@@ -41,9 +41,10 @@ const router = createRouter({
       component: Balustrade,
     },
     {
-      path: '/balustrada',
-      name: 'balustrada',
+      path: '/balustrada/:id',
+      name: 'produs-balustrada',
       component: ProdusBalustrada,
+      props: true,
     },
     {
       path: '/ferestre',
@@ -51,8 +52,8 @@ const router = createRouter({
       component: FerestrePage,
     }, 
     {
-      path: '/fereastra',
-      name: 'fereastra',
+      path: '/fereastra/:id',
+      name: 'produs-fereastra',
       component: ProdusFereastra,
     },
     {
@@ -61,8 +62,8 @@ const router = createRouter({
       component: RoletePage,
     },
     {
-      path: '/roleta',
-      name: 'roleta',
+      path: '/roleta/:id',
+      name: 'produs-roleta',
       component: ProdusRoleta,
     },
     {
@@ -71,8 +72,8 @@ const router = createRouter({
       component: UsiPage,
     },  
     {
-      path: '/usa',
-      name: 'usa',
+      path: '/usa/:id',
+      name: 'produs-usa',
       component: ProdusUsi,
     },    
   ],

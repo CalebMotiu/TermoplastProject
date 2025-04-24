@@ -155,8 +155,10 @@ const handleCancelEdit = () => {
           <ProductCard
             :title="product.title"
             :imageSrc="product.img"
-            :route="product.route || '/balustrada'"
+            :route="`/balustrada/${index}`"
           />
+
+
 
           <div class="flex justify-center gap-2 mt-2">
             <button @click="handleStartEdit(index)" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">
